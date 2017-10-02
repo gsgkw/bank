@@ -30,4 +30,9 @@ describe Statement do
     expect { subject.print_transactions }.to output("1 || 2 || 3 || 4\n").to_stdout
   end
 
+  it 'prints header and transaction data' do
+    subject.add(100)
+    expect { subject.print }.to output("date || credit || debit || balance\n1 || 2 || 3 || 4\n").to_stdout
+  end
+
 end
