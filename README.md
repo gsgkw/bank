@@ -18,3 +18,44 @@ date || credit || debit || balance
 14/01/2012 || || 500.00 || 2500.00
 13/01/2012 || 2000.00 || || 3000.00
 10/01/2012 || 1000.00 || || 1000.00
+
+Tests
+
+Account
+  has a starting balance of 0
+  deposit increases balance
+  withdraw decreases balance
+  print returns statement
+
+Statement
+  prints header
+  initializes with empty log
+  adds transaction to log
+  prints transaction data
+  prints header and transaction data
+
+Transaction
+  responds to balance
+  responds to credit
+  responds to debit
+
+
+Features
+
+p account = Account.new
+/#<Account:0x007ffb700126d8 @balance=0, @statement=#<Statement:0x007ffb70012688 @transaction=Transaction, @records=[]>>
+
+p account.deposit(100)
+[#<Transaction:0x007ffb700121d8 @date=#<Date: 2017-10-02 ((2458029j,0s,0n),+0s,2299161j)>, @credit=100, @debit="", @balance=100>]
+
+p account.deposit(150)
+[#<Transaction:0x007ffb70011da0 @date=#<Date: 2017-10-02 ((2458029j,0s,0n),+0s,2299161j)>, @credit=150, @debit="", @balance=250>, #<Transaction:0x007ffb700121d8 @date=#<Date: 2017-10-02 ((2458029j,0s,0n),+0s,2299161j)>, @credit=100, @debit="", @balance=100>]
+
+p account.withdraw(70)
+[#<Transaction:0x007ffb70011580 @date=#<Date: 2017-10-02 ((2458029j,0s,0n),+0s,2299161j)>, @credit="", @debit=70, @balance=180>, #<Transaction:0x007ffb70011da0 @date=#<Date: 2017-10-02 ((2458029j,0s,0n),+0s,2299161j)>, @credit=150, @debit="", @balance=250>, #<Transaction:0x007ffb700121d8 @date=#<Date: 2017-10-02 ((2458029j,0s,0n),+0s,2299161j)>, @credit=100, @debit="", @balance=100>]
+
+account.print_statement
+date || credit || debit || balance
+2017-10-02 ||  || 70 || 180
+2017-10-02 || 150 ||  || 250
+2017-10-02 || 100 ||  || 100
