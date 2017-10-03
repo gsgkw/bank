@@ -39,7 +39,7 @@ Account
   has a starting balance of 0
   deposit increases balance
   withdraw decreases balance
-  prints statementcd ryuby
+  prints statement
 
 Statement
   initializes with empty log
