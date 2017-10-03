@@ -1,5 +1,19 @@
 Specification
 
+Setup
+
+Run bundle install
+
+Create new account using Account.new
+Deposit and Withdraw funds using account.deposit or account.withdraw
+print statement using account.print_statement
+
+statement is instance of statement class
+transactions are instances of transaction class
+
+
+
+
 Requirements
 
 Deposits, withdrawal.
@@ -25,19 +39,17 @@ Account
   has a starting balance of 0
   deposit increases balance
   withdraw decreases balance
-  print returns statement
+  prints statementcd ryuby
 
 Statement
-  prints header
   initializes with empty log
   adds transaction to log
-  prints transaction data
   prints header and transaction data
 
 Transaction
-  responds to balance
-  responds to credit
-  responds to debit
+  returns balance
+  returns credit
+  returns debit
 
 
 Features
@@ -56,6 +68,6 @@ p account.withdraw(70)
 
 account.print_statement
 date || credit || debit || balance
-2017-10-02 ||  || 70 || 180
-2017-10-02 || 150 ||  || 250
-2017-10-02 || 100 ||  || 100
+10/03/17 ||  || 70 || 180
+10/03/17 || 150 ||  || 250
+10/03/17 || 100 ||  || 100

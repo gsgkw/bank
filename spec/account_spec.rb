@@ -6,6 +6,7 @@ describe Account do
 
   before do
     allow(statement).to receive(:add)
+    allow(statement).to receive(:print) { "printed statement" }
   end
 
   it 'has a starting balance of 0' do
@@ -25,8 +26,8 @@ describe Account do
     expect(subject.balance).to eq 0
   end
 
-  it 'print returns statement' do
-    expect(statement).to receive :print
-    subject.print_statement
+  it 'prints statement' do
+    expect(subject.print_statement).to eq "printed statement"
+
   end
 end
