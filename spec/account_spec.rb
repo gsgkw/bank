@@ -1,12 +1,12 @@
 require 'account'
 
 describe Account do
-  let(:statement) { double :statement }
-  subject(:Account) { described_class.new(statement) }
+  let(:statement_double) { double :statement }
+  subject(:Account) { described_class.new(statement: statement_double) }
 
   before do
-    allow(statement).to receive(:add)
-    allow(statement).to receive(:print) { "printed statement" }
+    allow(statement_double).to receive(:add)
+    allow(statement_double).to receive(:print) { "printed statement" }
   end
 
   it 'has a starting balance of 0' do
@@ -14,14 +14,14 @@ describe Account do
   end
 
   it 'deposit increases balance' do
-    expect(statement).to receive :add
+    expect(statement_double).to receive :add
     subject.deposit(100)
     expect(subject.balance).to eq 100
   end
 
   it 'withdraw decreases balance' do
     subject.deposit(100)
-    expect(statement).to receive :add
+    expect(statement_double).to receive :add
     subject.withdraw(100)
     expect(subject.balance).to eq 0
   end

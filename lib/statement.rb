@@ -2,8 +2,7 @@ class Statement
 
   attr_reader :records
 
-  def initialize(transaction = Transaction)
-    @transaction = transaction
+  def initialize
     @records = []
   end
 

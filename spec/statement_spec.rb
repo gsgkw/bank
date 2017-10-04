@@ -1,16 +1,16 @@
 require 'statement'
 
 describe Statement do
-  let(:transactionclass) { double :transaction }
-  let(:transaction) { double :transaction }
-  subject(:Statement) { described_class.new(transaction) }
+  let(:debit_class) { double :DebitTransaction }
+  let(:debit) { double :debit }
+  subject(:Statement) { described_class.new }
 
   before do
-    allow(transactionclass).to receive(:new) { transaction }
-    allow(transaction).to receive(:date) { 1 }
-    allow(transaction).to receive(:credit) { 2 }
-    allow(transaction).to receive(:debit) { 3 }
-    allow(transaction).to receive(:balance) { 4 }
+    allow(debit_class).to receive(:new) { debit }
+    allow(debit).to receive(:date) { "1.00" }
+    allow(debit).to receive(:credit) { "" }
+    allow(debit).to receive(:debit) { "2.00" }
+    allow(debit).to receive(:balance) { "3.00" }
   end
 
   it 'initializes with empty log' do
@@ -18,13 +18,13 @@ describe Statement do
   end
 
   it 'adds transaction to log' do
-    subject.add(transaction)
-    expect(subject.records).to eq [transaction]
+    subject.add(debit)
+    expect(subject.records).to eq [debit]
   end
 
   it 'prints header and transaction data' do
-    subject.add(transaction)
-    expect { subject.print }.to output("date || credit || debit || balance\n1 || 2 || 3 || 4\n").to_stdout
+    subject.add(debit)
+    expect { subject.print }.to output("date || credit || debit || balance\n1.00 ||  || 2.00 || 3.00\n").to_stdout
   end
 
 end
