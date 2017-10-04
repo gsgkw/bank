@@ -7,10 +7,7 @@ describe Statement do
 
   before do
     allow(debit_class).to receive(:new) { debit }
-    allow(debit).to receive(:date) { "1.00" }
-    allow(debit).to receive(:credit) { "" }
-    allow(debit).to receive(:debit) { "2.00" }
-    allow(debit).to receive(:balance) { "3.00" }
+    allow(debit).to receive(:format) { "1.00 || || 2.00 || 3.00" }
   end
 
   it 'initializes with empty log' do
@@ -24,7 +21,7 @@ describe Statement do
 
   it 'prints header and transaction data' do
     subject.add(debit)
-    expect { subject.print }.to output("date || credit || debit || balance\n1.00 ||  || 2.00 || 3.00\n").to_stdout
+    expect { subject.print }.to output("date || credit || debit || balance\n1.00 || || 2.00 || 3.00\n").to_stdout
   end
 
 end

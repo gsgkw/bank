@@ -23,18 +23,7 @@ class StatementFormatter
 
   def self.print_transactions(records)
     records.each do |transaction|
-      puts TransactionFormatter.format(transaction)
+      puts transaction.format
     end
-  end
-end
-
-class TransactionFormatter
-  def self.format(transaction)
-    [
-      transaction.date,
-      transaction.credit,
-      transaction.debit,
-      transaction.balance
-    ].join(" || ")
   end
 end

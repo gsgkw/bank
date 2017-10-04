@@ -46,11 +46,11 @@ Statement
   adds transaction to log
   prints header and transaction data
 
-Transaction
-  returns balance
-  returns credit
-  returns debit
+DebitTransaction
+  formats transaction
 
+CreditTransaction
+  formats transaction
 
 Features
 
@@ -68,6 +68,6 @@ p account.withdraw(70)
 
 account.print_statement
 date || credit || debit || balance
-10/03/17 ||  || 70 || 180
-10/03/17 || 150 ||  || 250
-10/03/17 || 100 ||  || 100
+10/03/17 || || 70.00 || 180.00
+10/03/17 || 150.00 || || 250.00
+10/03/17 || 100.00 || || 100.00
