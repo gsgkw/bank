@@ -15,7 +15,7 @@ describe Statement do
   end
 
   it 'adds transaction to log' do
-    subject.add(debit)
+    subject.add_debit(debit)
     expect(subject.records).to eq [debit]
   end
 

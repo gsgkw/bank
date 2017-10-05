@@ -11,12 +11,12 @@ class Account
 
   def deposit(amount)
     @balance += amount
-    @statement.add(@credit.new(balance: @balance, credit: amount))
+    @statement.add_credit(@credit.new(balance: @balance, credit: amount))
   end
 
   def withdraw(amount)
     @balance -= amount
-    @statement.add(@debit.new(balance: @balance, debit: amount))
+    @statement.add_debit(@debit.new(balance: @balance, debit: amount))
   end
 
   def print_statement

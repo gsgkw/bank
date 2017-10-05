@@ -9,7 +9,6 @@ describe DebitTransaction do
   end
 end
 
-
 describe CreditTransaction do
 
   let(:credit) { CreditTransaction.new({ balance: 100, credit: 99 }) }

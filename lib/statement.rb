@@ -6,8 +6,12 @@ class Statement
     @records = []
   end
 
-  def add(transaction)
-    @records.unshift(transaction)
+  def add_credit(transaction)
+    @records.unshift(TransactionFormatter.credit(transaction))
+  end
+
+  def add_debit(transaction)
+    @records.unshift(TransactionFormatter.debit(transaction))
   end
 
   def print
@@ -23,7 +27,17 @@ class StatementFormatter
 
   def self.print_transactions(records)
     records.each do |transaction|
-      puts transaction.format
+      puts transaction
     end
+  end
+end
+
+class TransactionFormatter
+  def self.credit(transaction)
+    "#{transaction.date} || #{'%.2f' % transaction.credit} || || #{'%.2f' % transaction.balance}"
+  end
+
+  def self.debit(transaction)
+    "#{transaction.date} || || #{'%.2f' % transaction.debit} || #{'%.2f' % transaction.balance}"
   end
 end
